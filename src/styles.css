@@ -1,3 +1,7 @@
+@import "./theme/forms.css";
+@import "./theme/calendar.css";
+@import "./theme/modals.css";
+
 html {
   font-family: sans-serif;
 }
@@ -7,13 +11,3 @@ body {
   background-color: #fff;
 }
 
-button.submit.disabled{
-  background: #a1a1a1;
-}
-
-.error {
-  color: #d4282b;
-  margin-top: -18px;
-  margin-bottom: 20px;
-  font-size: 12px;
-}

@@ -1,0 +1,77 @@
+.form-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.1);
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+}
+
+.form-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #000;
+  text-align: center;
+}
+
+.form-box .user-box {
+  position: relative;
+}
+
+.form-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  background: transparent;
+}
+
+.form-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #000;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.form-box .user-box input:focus ~ label,
+.form-box .user-box input.has-value ~ label {
+  top: -20px;
+  left: 0;
+  color: #d95f5f;
+  font-size: 14px;
+}
+
+.submit {
+  padding: 5px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: none;
+  color: #ffffff;
+  background-color: #d95f5f;
+  width: 100%;
+  font-size: 15px;
+}
+
+button.submit.disabled{
+  background: #a1a1a1;
+}
+
+.error {
+  color: #d4282b;
+  margin-top: -18px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
