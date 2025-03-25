@@ -1,0 +1,52 @@
+<div class="login-box">
+  <h2>re:<span class="red">Q</span>uital</h2>
+  <!-- <p class="explanatory-text">Sign up to see ...</p> -->
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="user-box">
+      <input type="email"
+             name=""
+             required=""
+             formControlName="email"
+             [class]="form.controls['email'].value ? 'has-value': ''"
+      >
+      <label>Email</label>
+      @if (form.controls['email'].invalid && form.controls['email'].touched) {
+        <p class="error">
+          Email invalid!
+        </p>
+      }
+    </div>
+    <div class="user-box">
+      <input type="password"
+             name=""
+             required=""
+             formControlName="password"
+             [class]="form.controls['password'].value ? 'has-value': ''"
+      >
+      <label>Password</label>
+      @if (form.controls['password'].invalid && form.controls['password'].touched) {
+        <p class="error">
+          Password invalid!
+        </p>
+      }
+    </div>
+    <div class="user-box">
+      <input type="text"
+             name=""
+             required=""
+             formControlName="userName"
+             [class]="form.controls['userName'].value ? 'has-value': ''"
+      >
+      <label>Username</label>
+      @if (form.controls['userName'].invalid && form.controls['userName'].touched) {
+        <p class="error">
+          Username invalid!
+        </p>
+      }
+    </div>
+    <button type="submit" class="submit" [class.disabled]="form.invalid">Sign up</button>
+  </form>
+  <div class="sign-up-question">
+    <p>Have an account? <a routerLink="/log-in" class="sign-up-link">Log in</a></p>
+  </div>
+</div>
