@@ -7,6 +7,7 @@ import { SignUpComponent } from "./app/sign-up/sign-up.component";
 import { HomeComponent } from "./app/home/home.component";
 import { ForgotPasswordComponent } from "./app/forgot-password/forgot-password.component";
 import { ChangePasswordComponent } from "./app/change-password/change-password.component";
+import { CalendarComponent } from "./app/calendar/calendar.component";
 
 bootstrapApplication(AppComponent, {
   providers: [provideRouter([
@@ -29,6 +30,10 @@ bootstrapApplication(AppComponent, {
     {
       path: 'change-password',
       component: ChangePasswordComponent,
+    },
+    {
+      path: 'calendar',
+      component: CalendarComponent,
     },
   ])]
 }).catch((err) => console.error(err));

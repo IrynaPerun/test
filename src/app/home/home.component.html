@@ -1,1 +1,19 @@
-<p>home hello</p>
+<div class="form-box">
+  <h2>re:<span class="letter">Q</span>uital</h2>
+  <p>What activities will be rewarded?</p>
+  <div [formGroup]="form" (ngSubmit)="submit()">
+    <input type="checkbox"
+           id="kindergarten"
+           name="kindergarten"
+           required=""
+    >
+    <label for="kindergarten">Kindergarten</label><br>
+    <input type="checkbox"
+           id="school"
+           name="school"
+           required=""
+    >
+    <label for="school">School</label><br>
+  </div>
+    <button type="submit" class="submit">Go to calendar</button>
+</div>

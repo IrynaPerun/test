@@ -35,6 +35,10 @@
   background: transparent;
 }
 
+.form-box .user-box input .error-line {
+  border-bottom: 1px solid #d4282b;
+}
+
 .form-box .user-box label {
   position: absolute;
   top:0;
