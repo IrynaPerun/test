@@ -11,7 +11,7 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
     ReactiveFormsModule
   ],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+  styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent {
   form: FormGroup = new FormGroup({

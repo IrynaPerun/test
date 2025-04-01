@@ -11,7 +11,7 @@ import { Router, RouterLink } from "@angular/router";
         ReactiveFormsModule
     ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   form: FormGroup = new FormGroup({

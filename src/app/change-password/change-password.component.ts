@@ -11,7 +11,7 @@ import {Router, RouterLink} from "@angular/router";
         RouterLink
     ],
   templateUrl: './change-password.component.html',
-  styleUrl: './change-password.component.css'
+  styleUrl: './change-password.component.scss'
 })
 export class ChangePasswordComponent {
   form: FormGroup = new FormGroup({

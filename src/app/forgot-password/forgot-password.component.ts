@@ -11,7 +11,7 @@ import {Router, RouterLink} from "@angular/router";
     RouterLink
   ],
   templateUrl: './forgot-password.component.html',
-  styleUrl: './forgot-password.component.css'
+  styleUrl: './forgot-password.component.scss'
 })
 export class ForgotPasswordComponent {
   form: FormGroup = new FormGroup({
