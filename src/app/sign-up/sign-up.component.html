@@ -2,7 +2,7 @@
   <h2>re:<span class="letter">Q</span>uital</h2>
   <!-- <p class="explanatory-text">Sign up to see ...</p> -->
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="user-box">
+    <div class="user-box" [class.has-error]="form.controls['email'].invalid && form.controls['email'].touched">
       <input type="email"
              name=""
              required=""
@@ -16,7 +16,7 @@
         </p>
       }
     </div>
-    <div class="user-box">
+    <div class="user-box" [class.has-error]="form.controls['password'].invalid && form.controls['password'].touched">
       <input type="password"
              name=""
              required=""
@@ -30,7 +30,7 @@
         </p>
       }
     </div>
-    <div class="user-box">
+    <div class="user-box" [class.has-error]="form.controls['userName'].invalid && form.controls['userName'].touched">
       <input type="text"
              name=""
              required=""

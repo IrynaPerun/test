@@ -1,5 +1,5 @@
-import {Component, inject} from '@angular/core';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Component, ElementRef, inject, viewChild } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Router, RouterLink } from "@angular/router";
 
 @Component({
@@ -26,4 +26,10 @@ export class HomeComponent {
     //}
     this.router.navigate(['/calendar']);
   }
+
+  //private formElement = viewChild<ElementRef<HTMLFormElement>>('form');
+
+  //addNewInput (reward: string) {
+  //  this.formElement()?.nativeElement.reset();
+  //}
 }
