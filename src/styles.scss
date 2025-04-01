@@ -2,12 +2,10 @@
 @import "theme/calendar";
 @import "theme/modals";
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 html {
-  font-family: sans-serif;
+  --mdc-filled-button-container-color: #0ca3b1;
+  --mdc-filled-button-container-shape: 4px;
 }
-
-body {
-  margin: 0;
-  background-color: #fff;
-}
-

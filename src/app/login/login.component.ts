@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,7 @@ import {Router, RouterLink} from "@angular/router";
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
+    MatButton,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'

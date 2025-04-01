@@ -8,6 +8,7 @@ import { HomeComponent } from "./app/home/home.component";
 import { ForgotPasswordComponent } from "./app/forgot-password/forgot-password.component";
 import { ChangePasswordComponent } from "./app/change-password/change-password.component";
 import { CalendarComponent } from "./app/calendar/calendar.component";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 bootstrapApplication(AppComponent, {
   providers: [provideRouter([
@@ -35,5 +36,5 @@ bootstrapApplication(AppComponent, {
       path: 'calendar',
       component: CalendarComponent,
     },
-  ])]
+  ]), provideAnimationsAsync()]
 }).catch((err) => console.error(err));
