@@ -1,4 +1,4 @@
-<div class="form-box">
+<div class="form-container">
   <h2>re:<span class="letter">Q</span>uital</h2>
   <!-- <p class="explanatory-text">Sign up to see ...</p> -->
   <form [formGroup]="form" (ngSubmit)="submit()">
@@ -44,7 +44,7 @@
         </p>
       }
     </div>
-    <button type="submit" class="submit" [class.disabled]="form.invalid">Sign up</button>
+    <button mat-flat-button type="submit" class="submit" [class.disabled]="form.invalid">Sign up</button>
   </form>
   <div class="sign-up-question">
     <p>Have an account? <a routerLink="/log-in" class="sign-up-link">Log in</a></p>

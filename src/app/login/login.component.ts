@@ -2,6 +2,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {MatButton} from "@angular/material/button";
+import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,10 @@ import {MatButton} from "@angular/material/button";
     ReactiveFormsModule,
     RouterLink,
     MatButton,
+    MatError,
+    MatFormField,
+    MatInput,
+    MatLabel,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'

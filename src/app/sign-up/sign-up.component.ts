@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-sign-up',
@@ -8,7 +9,8 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
   imports: [
     RouterLink,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButton
   ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'

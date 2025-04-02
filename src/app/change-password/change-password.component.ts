@@ -1,15 +1,17 @@
 import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-change-password',
   standalone: true,
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        RouterLink
-    ],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    RouterLink,
+    MatButton
+  ],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.scss'
 })
