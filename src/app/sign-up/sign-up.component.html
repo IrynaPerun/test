@@ -2,47 +2,55 @@
   <h2>re:<span class="letter">Q</span>uital</h2>
   <!-- <p class="explanatory-text">Sign up to see ...</p> -->
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="user-box" [class.has-error]="form.controls['email'].invalid && form.controls['email'].touched">
-      <input type="email"
-             name=""
-             required=""
-             formControlName="email"
-             [class]="form.controls['email'].value ? 'has-value': ''"
-      >
-      <label>Email</label>
-      @if (form.controls['email'].invalid && form.controls['email'].touched) {
-        <p class="error">
-          Email invalid!
-        </p>
-      }
+    <div class="user-box">
+      <mat-form-field class="form-field">
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="requital@example.com"
+          formControlName="email"
+          required
+        />
+        @if (form.controls['email'].invalid && form.controls['email'].touched) {
+          <mat-error>Not a valid email!</mat-error>
+        }
+      </mat-form-field>
     </div>
-    <div class="user-box" [class.has-error]="form.controls['password'].invalid && form.controls['password'].touched">
-      <input type="password"
-             name=""
-             required=""
-             formControlName="password"
-             [class]="form.controls['password'].value ? 'has-value': ''"
-      >
-      <label>Password</label>
-      @if (form.controls['password'].invalid && form.controls['password'].touched) {
-        <p class="error">
-          Password invalid!
-        </p>
-      }
+    <div class="user-box">
+      <mat-form-field class="form-field">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          required
+          formControlName="password"
+          [type]="hide() ? 'password' : 'text'" />
+        @if (form.controls['password'].invalid && form.controls['password'].touched) {
+          <mat-error>Not a valid password!</mat-error>
+        }
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
-    <div class="user-box" [class.has-error]="form.controls['userName'].invalid && form.controls['userName'].touched">
-      <input type="text"
-             name=""
-             required=""
-             formControlName="userName"
-             [class]="form.controls['userName'].value ? 'has-value': ''"
-      >
-      <label>Username</label>
-      @if (form.controls['userName'].invalid && form.controls['userName'].touched) {
-        <p class="error">
-          Username invalid!
-        </p>
-      }
+    <div class="user-box">
+      <mat-form-field class="form-field">
+        <mat-label>Enter your name</mat-label>
+        <input
+          matInput
+          placeholder="requital@example.com"
+          formControlName="userName"
+          required
+        />
+        @if (form.controls['userName'].invalid && form.controls['userName'].touched) {
+          <mat-error>Not a valid email!</mat-error>
+        }
+      </mat-form-field>
     </div>
     <button mat-flat-button type="submit" class="submit" [class.disabled]="form.invalid">Sign up</button>
   </form>

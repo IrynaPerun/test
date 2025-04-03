@@ -1,9 +1,10 @@
-import {Component, inject} from '@angular/core';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Router, RouterLink} from "@angular/router";
-import {MatButton} from "@angular/material/button";
-import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
-import {MatInput} from "@angular/material/input";
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { Router, RouterLink } from "@angular/router";
+import { MatButton, MatIconButton } from "@angular/material/button";
+import { MatError, MatFormField, MatLabel, MatSuffix } from "@angular/material/form-field";
+import { MatInput } from "@angular/material/input";
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,11 @@ import {MatInput} from "@angular/material/input";
     MatFormField,
     MatInput,
     MatLabel,
+    MatIcon,
+    MatIconButton,
+    MatSuffix
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -28,12 +33,17 @@ export class LoginComponent {
   });
   private router = inject(Router);
 
+  hide = signal(true);
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
+
   submit () {
     if (this.form.invalid) {
       return;
     }
     console.log(this.form.value);
-
-    this.router.navigate(['/']);
+    this.router.navigate(['works-list']);
   }
 }

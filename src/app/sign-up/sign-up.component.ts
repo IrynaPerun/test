@@ -1,7 +1,10 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatError, MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-sign-up',
@@ -10,8 +13,16 @@ import {MatButton} from "@angular/material/button";
     RouterLink,
     FormsModule,
     ReactiveFormsModule,
-    MatButton
+    MatButton,
+    MatError,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatIcon,
+    MatIconButton,
+    MatSuffix
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
@@ -21,6 +32,13 @@ export class SignUpComponent {
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     userName: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
+
+  hide = signal(true);
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
+
   private router = inject(Router);
 
   submit () {
@@ -29,7 +47,6 @@ export class SignUpComponent {
       return;
     }
     console.log(this.form.value);
-
     this.router.navigate(['/']);
   }
 }
