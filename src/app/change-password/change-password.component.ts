@@ -31,9 +31,11 @@ export class ChangePasswordComponent {
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
-  hide = signal(true);
-  clickEvent(event: MouseEvent) {
-    this.hide.set(!this.hide());
+  hidePassword = signal(true);
+  hideConfirmPassword = signal(true);
+  clickEvent(event: MouseEvent, hide: boolean) {
+    if (hide) this.hidePassword.set(!this.hidePassword());
+    else this.hideConfirmPassword.set(!this.hideConfirmPassword());
     event.stopPropagation();
   }
 
