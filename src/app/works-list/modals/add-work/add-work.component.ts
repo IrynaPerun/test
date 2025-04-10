@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {
+  MAT_DIALOG_DATA,
   MatDialog,
   MatDialogActions,
   MatDialogClose,
@@ -12,6 +13,7 @@ import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatOption, MatSelect} from "@angular/material/select";
+import {IWorkItem} from "../../interface/work-item.interface";
 
 @Component({
   selector: 'app-add-work',
@@ -35,10 +37,11 @@ import {MatOption, MatSelect} from "@angular/material/select";
 })
 export class AddWorkComponent {
   dialog: MatDialogRef<AddWorkComponent> = inject(MatDialogRef);
+  dialogData: IWorkItem | undefined = inject(MAT_DIALOG_DATA);
   form: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    points: new FormControl('10', [Validators.required,]),
-    repeat: new FormControl('0', [Validators.required,]),
+    name: new FormControl(this.dialogData?.name || '', [Validators.required, Validators.minLength(6)]),
+    points: new FormControl(this.dialogData?.points || '50', [Validators.required, Validators.min(10)]),
+    repeat: new FormControl(this.dialogData?.repeat || '0', [Validators.required,]),
   });
 
   submit () {

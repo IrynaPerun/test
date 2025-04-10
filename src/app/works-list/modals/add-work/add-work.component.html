@@ -21,7 +21,7 @@
           step="10"
           matInput
           formControlName="points"
-          required
+          min="0"
         />
         @if (form.controls['points'].invalid && form.controls['points'].touched) {
           <mat-error>Not a valid number!</mat-error>

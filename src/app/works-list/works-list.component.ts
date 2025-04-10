@@ -1,55 +1,45 @@
-import { Component, inject } from '@angular/core';
-import { MatTableDataSource, MatTableModule } from "@angular/material/table";
-import { MatButton, MatMiniFabButton } from "@angular/material/button";
-import { FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { Router } from "@angular/router";
-import { MatIcon } from "@angular/material/icon";
-import { MatDialog } from "@angular/material/dialog";
-import { AddWorkComponent } from "./modals/add-work/add-work.component";
-
-export interface TableElement {
-  name: string;
-  points: number;
-  repeat: number;
-}
-
-const ELEMENT_DATA: TableElement[] = [
-  { name: "Kindergarten", points: 50, repeat: 0},
-  { name: "Swimming", points: 30, repeat: 0},
-  { name: "Football", points: 40, repeat: 0},
-  { name: "Tennis", points: 10, repeat: 0},
-];
+import {Component, inject} from '@angular/core';
+import {MatTableDataSource, MatTableModule} from "@angular/material/table";
+import {MatButton} from "@angular/material/button";
+import {FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {Router} from "@angular/router";
+import {MatIcon} from "@angular/material/icon";
+import {MatDialog} from "@angular/material/dialog";
+import {AddWorkComponent} from "./modals/add-work/add-work.component";
+import {IWorkItem} from "./interface/work-item.interface";
+import {WorkListService} from "./work-list.service";
 
 @Component({
   selector: 'app-works-list',
   standalone: true,
-  imports: [MatTableModule, MatButton, ReactiveFormsModule, MatMiniFabButton, MatIcon],
+  imports: [MatTableModule, MatButton, ReactiveFormsModule, MatIcon],
   templateUrl: './works-list.component.html',
   styleUrl: './works-list.component.scss'
 })
 export class WorksListComponent {
-  displayedColumns: string[] = ['name', 'points', 'repeat','actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  clickedRows = new Set<TableElement>();
-
-  form: FormGroup = new FormGroup({});
   private router = inject(Router);
-
   readonly dialog = inject(MatDialog);
+  workListService = inject(WorkListService);
+  displayedColumns: string[] = ['id', 'name', 'points', 'repeat','actions'];
+  dataSource = new MatTableDataSource<IWorkItem>(this.workListService.getWorkList());
+  clickedRows = new Set<IWorkItem>();
+  form: FormGroup = new FormGroup({});
 
-  openDialog() {
-    const dialogRef = this.dialog.open(AddWorkComponent);
+  openDialog(item?: IWorkItem) {
+    const dialogRef = this.dialog.open(AddWorkComponent, {
+      data: item
+    });
 
-    dialogRef.afterClosed().subscribe((result:TableElement) => {
+    dialogRef.afterClosed().subscribe((result:IWorkItem) => {
       if (result) {
         console.log('Dialog result save to table: ',result, this.dataSource.data);
+        const newItem = this.workListService.createItem(result);
         const newData = [ ...this.dataSource.data ];
-        newData.unshift(result);
+        newData.unshift(newItem);
         this.dataSource.data = newData;
       } else {
         console.log('Dialog was closed');
       }
-
       console.log('this.dataSource', this.dataSource);
     });
   }
@@ -67,11 +57,20 @@ export class WorksListComponent {
     this.openDialog();
   }
 
-  editRow() {
-    console.log('editRow');
+  editRow(item: IWorkItem) {
+    console.log('editRow',item);
+    this.openDialog(item);
   }
 
-  deleteRow() {
-    console.log('deleteRow');
+  deleteRow(id: number) {
+    console.log('deleteRow', id);
+    if (confirm('Are you sure you want to delete?')) {
+      if (this.workListService.deleteItem(id)) {
+        this.dataSource.data = [...this.dataSource.data.filter((item) => {
+          return item.id !== id;
+        })];
+      }
+    }
+
   }
 }

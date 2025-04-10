@@ -3,6 +3,11 @@
     <div class="child-name">Lev Perun</div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
 
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{element.id}}</td>
+      </ng-container>
+
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -26,8 +31,8 @@
           <button mat-button (click)="addRow()" type="button">+ Add</button>
         </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button (click)="editRow()" type="button"><mat-icon>edit</mat-icon></button>
-          <button mat-button (click)="deleteRow()" type="button"><mat-icon>delete</mat-icon></button>
+          <button mat-button (click)="editRow(element)" type="button"><mat-icon>edit</mat-icon></button>
+          <button mat-button (click)="deleteRow(element.id)" type="button"><mat-icon>delete</mat-icon></button>
         </td>
       </ng-container>
 
