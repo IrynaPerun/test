@@ -44,10 +44,10 @@
         <mat-label>Enter your name</mat-label>
         <input
           matInput
-          formControlName="userName"
+          formControlName="name"
           required
         />
-        @if (form.controls['userName'].invalid && form.controls['userName'].touched) {
+        @if (form.controls['name'].invalid && form.controls['name'].touched) {
           <mat-error>Not a valid email!</mat-error>
         }
       </mat-form-field>

@@ -5,6 +5,8 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatError, MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
+import {LocalStorageService} from "../../shared/services/local-storage.service";
+import {UserService} from "../../shared/services/user.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -27,10 +29,11 @@ import {MatIcon} from "@angular/material/icon";
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent {
+  userService: UserService = inject(UserService);
   form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    userName: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    name: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   hide = signal(true);
@@ -47,6 +50,9 @@ export class SignUpComponent {
       return;
     }
     console.log(this.form.value);
-    this.router.navigate(['/']);
+
+    this.userService.saveUser(this.form.value);
+
+    this.router.navigate(['/works-list']);
   }
 }

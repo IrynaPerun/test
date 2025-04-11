@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
@@ -39,6 +39,7 @@ export class AddWorkComponent {
   dialog: MatDialogRef<AddWorkComponent> = inject(MatDialogRef);
   dialogData: IWorkItem | undefined = inject(MAT_DIALOG_DATA);
   form: FormGroup = new FormGroup({
+    id: new FormControl(this.dialogData?.id || null),
     name: new FormControl(this.dialogData?.name || '', [Validators.required, Validators.minLength(6)]),
     points: new FormControl(this.dialogData?.points || '50', [Validators.required, Validators.min(10)]),
     repeat: new FormControl(this.dialogData?.repeat || '0', [Validators.required,]),

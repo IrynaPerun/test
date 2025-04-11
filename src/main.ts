@@ -2,20 +2,20 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from "@angular/router";
 
 import { AppComponent } from './app/app.component';
-import { LoginComponent } from "./app/login/login.component";
-import { SignUpComponent } from "./app/sign-up/sign-up.component";
-import { HomeComponent } from "./app/home/home.component";
-import { ForgotPasswordComponent } from "./app/forgot-password/forgot-password.component";
-import { ChangePasswordComponent } from "./app/change-password/change-password.component";
-import { CalendarComponent } from "./app/calendar/calendar.component";
+import { LoginComponent } from "./app/features/login/login.component";
+import { SignUpComponent } from "./app/features/sign-up/sign-up.component";
+import { HomeComponent } from "./app/features/home/home.component";
+import { ForgotPasswordComponent } from "./app/features/forgot-password/forgot-password.component";
+import { ChangePasswordComponent } from "./app/features/change-password/change-password.component";
+import { CalendarComponent } from "./app/features/calendar/calendar.component";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {WorksListComponent} from "./app/works-list/works-list.component";
+import {WorksListComponent} from "./app/features/works-list/works-list.component";
 
 bootstrapApplication(AppComponent, {
   providers: [provideRouter([
     {
       path: '',
-      component: HomeComponent,
+      component: WorksListComponent,
     },
     {
       path: 'log-in',

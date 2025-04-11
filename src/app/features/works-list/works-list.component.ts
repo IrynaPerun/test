@@ -8,6 +8,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {AddWorkComponent} from "./modals/add-work/add-work.component";
 import {IWorkItem} from "./interface/work-item.interface";
 import {WorkListService} from "./work-list.service";
+import {UserService} from "../../shared/services/user.service";
+import {IUser} from "../../shared/interfaces/user.interface";
 
 @Component({
   selector: 'app-works-list',
@@ -17,6 +19,8 @@ import {WorkListService} from "./work-list.service";
   styleUrl: './works-list.component.scss'
 })
 export class WorksListComponent {
+  userService: UserService = inject(UserService);
+  user: IUser = this.userService.user;
   private router = inject(Router);
   readonly dialog = inject(MatDialog);
   workListService = inject(WorkListService);
@@ -32,15 +36,24 @@ export class WorksListComponent {
 
     dialogRef.afterClosed().subscribe((result:IWorkItem) => {
       if (result) {
-        console.log('Dialog result save to table: ',result, this.dataSource.data);
-        const newItem = this.workListService.createItem(result);
-        const newData = [ ...this.dataSource.data ];
-        newData.unshift(newItem);
+        const isNew = !result.id;
+        const newItem = isNew ? this.workListService.createItem(result) : this.workListService.editItem(result);
+        let newData = [ ...this.dataSource.data ];
+        // create flow
+        if (isNew) newData.unshift(newItem);
+        else {
+          // edit flow
+          newData = newData.map((row) => {
+            if (row.id === newItem.id) {
+              row = newItem;
+            }
+
+            return row;
+          });
+        }
         this.dataSource.data = newData;
-      } else {
-        console.log('Dialog was closed');
+        this.workListService.saveData(newData);
       }
-      console.log('this.dataSource', this.dataSource);
     });
   }
 
@@ -69,6 +82,7 @@ export class WorksListComponent {
         this.dataSource.data = [...this.dataSource.data.filter((item) => {
           return item.id !== id;
         })];
+        this.workListService.saveData(this.dataSource.data);
       }
     }
 
