@@ -31,11 +31,29 @@
     <div class="user-box">
       <mat-form-field class="form-field">
         <mat-label>Enter repeat type</mat-label>
-        <mat-select formControlName="repeat">
-          <mat-option value="0">Daily</mat-option>
-          <mat-option value="1">Weekly</mat-option>
-          <mat-option value="2">Monthly</mat-option>
-        </mat-select>
+<!--        <mat-select formControlName="repeat">-->
+<!--          <mat-option value="0">Daily</mat-option>-->
+<!--          <mat-option value="1">Weekly</mat-option>-->
+<!--          <mat-option value="2">Monthly</mat-option>-->
+          <mat-checkbox formControlName="days"
+            class="example-margin"
+            [checked]="daysOfTheWeek().completed"
+            [indeterminate]="partiallyComplete()"
+            (change)="update($event.checked)"
+          >
+            {{daysOfTheWeek().name}}
+          </mat-checkbox>
+<!--        </mat-select>-->
+
+        <ul>
+          @for (days of daysOfTheWeek().days; track days; let i = $index) {
+            <li>
+              <mat-checkbox [checked]="days.completed" (change)="update($event.checked, i)">
+                {{days.name}}
+              </mat-checkbox>
+            </li>
+          }
+        </ul>
         @if (form.controls['repeat'].invalid && form.controls['repeat'].touched) {
           <mat-error>Not a valid!</mat-error>
         }
