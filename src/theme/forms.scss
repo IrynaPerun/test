@@ -5,16 +5,19 @@
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: #ffffff;
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.1);
-  border-radius: 4px;
-  border: 1px solid #e6e6e6;
   h2 {
     margin-bottom: 10px;
     padding: 0;
     color: #000;
     text-align: center;
+  }
+  &-wrap {
+    background: #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.1);
+    border-radius: 4px;
+    border: 1px solid #e6e6e6;
+    margin: 20px;
   }
 }
 

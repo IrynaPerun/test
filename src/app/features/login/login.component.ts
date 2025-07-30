@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { Router, RouterLink } from "@angular/router";
+import { RouterLink } from "@angular/router";
 import { MatButton, MatIconButton } from "@angular/material/button";
 import { MatError, MatFormField, MatLabel, MatSuffix } from "@angular/material/form-field";
 import { MatInput } from "@angular/material/input";
 import { MatIcon } from "@angular/material/icon";
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -27,11 +28,11 @@ import { MatIcon } from "@angular/material/icon";
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  private _authService = inject(AuthService);
   form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
-  private router = inject(Router);
 
   hide = signal(true);
   clickEvent(event: MouseEvent) {
@@ -44,6 +45,6 @@ export class LoginComponent {
       return;
     }
     console.log(this.form.value);
-    this.router.navigate(['works-list']);
+    this._authService.login(this.form.value).subscribe()
   }
 }

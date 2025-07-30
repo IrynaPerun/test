@@ -10,6 +10,8 @@ import { ChangePasswordComponent } from "./app/features/change-password/change-p
 import { CalendarComponent } from "./app/features/calendar/calendar.component";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {WorksListComponent} from "./app/features/works-list/works-list.component";
+import {provideHttpClient} from "@angular/common/http";
+import {ProductsComponent} from "./app/features/products/products.component";
 
 bootstrapApplication(AppComponent, {
   providers: [provideRouter([
@@ -41,5 +43,12 @@ bootstrapApplication(AppComponent, {
       path: 'works-list',
       component: WorksListComponent,
     },
-  ]), provideAnimationsAsync()]
+    {
+      path: 'products',
+      component: ProductsComponent,
+    },
+  ]),
+    provideAnimationsAsync(),
+    provideHttpClient(),
+  ]
 }).catch((err) => console.error(err));

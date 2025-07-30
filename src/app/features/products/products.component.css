@@ -1,0 +1,24 @@
+.form-container {
+  width: 1000px !important;
+}
+
+th , td {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  background-color: inherit;
+  box-shadow: none;
+}
+
+.submit {
+  margin: 30px auto 10px auto;
+  display: block;
+  width: 500px;
+
+}
+
+.demo-table {
+  width: 100%;
+}

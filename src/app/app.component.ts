@@ -9,7 +9,7 @@ import {RouterOutlet} from "@angular/router";
   imports: [
     LoginComponent,
     SignUpComponent,
-    RouterOutlet
+    RouterOutlet,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
