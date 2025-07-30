@@ -1,18 +1,14 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { tap } from "rxjs";
 import { IProduct } from "./interfaces/product.interface";
-import {MatTableDataSource, MatTableModule} from "@angular/material/table";
-import {IWorkItem} from "../works-list/interface/work-item.interface";
-import {FormsModule} from "@angular/forms";
-import {MatButton} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
-import {CurrencyPipe} from "@angular/common";
+import { MatTableModule} from "@angular/material/table";
+import { CurrencyPipe} from "@angular/common";
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [MatTableModule, FormsModule, MatButton, MatIcon, CurrencyPipe],
+  imports: [MatTableModule, CurrencyPipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })

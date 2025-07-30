@@ -12,6 +12,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {WorksListComponent} from "./app/features/works-list/works-list.component";
 import {provideHttpClient} from "@angular/common/http";
 import {ProductsComponent} from "./app/features/products/products.component";
+import {ClubsComponent} from "./app/features/clubs/clubs.component";
 
 bootstrapApplication(AppComponent, {
   providers: [provideRouter([
@@ -46,6 +47,10 @@ bootstrapApplication(AppComponent, {
     {
       path: 'products',
       component: ProductsComponent,
+    },
+    {
+      path: 'clubs',
+      component: ClubsComponent,
     },
   ]),
     provideAnimationsAsync(),
