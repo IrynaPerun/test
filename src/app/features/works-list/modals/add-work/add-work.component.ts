@@ -44,9 +44,9 @@ export class AddWorkComponent {
     id: new FormControl(this.dialogData?.id || null),
     name: new FormControl(this.dialogData?.name || '', [Validators.required, Validators.minLength(6)]),
     points: new FormControl(this.dialogData?.points || '50', [Validators.required, Validators.min(10)]),
-    monday: new FormControl(this.dialogData?.days?[0]?['completed'] || false),
-    thursday: new FormControl(this.dialogData?.days?[0]?['completed'] || false),
-    
+    monday: new FormControl(this.dialogData?.days?.[0]?.['completed'] || false),
+    thursday: new FormControl(this.dialogData?.days?.[0]?.['completed'] || false),
+
   });
 
   submit () {
