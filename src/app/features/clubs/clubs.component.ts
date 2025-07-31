@@ -5,6 +5,7 @@ import {IProduct} from "../products/interfaces/product.interface";
 import {tap} from "rxjs";
 import {IClub} from "./interfaces/club.interface";
 import {CurrencyPipe} from "@angular/common";
+import {AuthInterceptor} from "../../shared/interceptors/auth.interceptor";
 
 @Component({
   selector: 'app-clubs',
@@ -21,11 +22,7 @@ export class ClubsComponent  implements OnInit {
   ngOnInit() {
     console.log("i want to load clubs list")
     const url = 'https://backend.wellnesslifeclubs.com/api/v1/clubs';
-    this.http.get(url, {
-      headers: {
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('accessToken') || '')
-      }
-    }).pipe(
+    this.http.get(url).pipe(
       tap((response: any) => {
         console.log('1',response.data);
         this.dataSource.set(response.data);

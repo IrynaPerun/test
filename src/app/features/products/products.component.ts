@@ -20,11 +20,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     console.log("i want to load products list")
     const url = 'https://backend.wellnesslifeclubs.com/api/v1/user/products';
-    this.http.get(url, {
-      headers: {
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('accessToken') || '')
-      }
-    }).pipe(
+    this.http.get(url).pipe(
       tap((response: any) => {
         console.log('1',response.data);
         this.dataSource.set(response.data);

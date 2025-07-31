@@ -11,8 +11,10 @@ export class LocalStorageService {
   }
 
   // Get a value from local storage
-  getItem(key: string): any {
-    return JSON.parse(this.storage.getItem(key) ?? '[]');
+  getItem(key: string, defaultValue: string | null  = null): any {
+    console.log('getItem', this.storage.getItem(key) || defaultValue)
+    // @ts-ignore-next-line
+    return JSON.parse(this.storage.getItem(key) || defaultValue);
   }
 
   // Remove a value from local storage
