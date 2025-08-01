@@ -15,6 +15,7 @@ import {ClubsComponent} from "./app/features/clubs/clubs.component";
 import {AuthInterceptor} from "./app/shared/interceptors/auth.interceptor";
 import {AuthService} from "./app/shared/services/auth.service";
 import {HomeComponent} from "./app/features/home/home.component";
+import { authGuard } from "./app/shared/guards/auth.guard";
 
 bootstrapApplication(AppComponent, {
   providers: [provideRouter([
@@ -29,6 +30,7 @@ bootstrapApplication(AppComponent, {
     {
       path: 'home',
       component: HomeComponent,
+      // canActivate: [authGuard],
     },
     {
       path: 'forgot-password',
@@ -45,6 +47,7 @@ bootstrapApplication(AppComponent, {
     {
       path: 'calendar',
       component: CalendarComponent,
+      canActivate: [authGuard],
     },
     {
       path: 'works-list',
@@ -53,10 +56,12 @@ bootstrapApplication(AppComponent, {
     {
       path: 'products',
       component: ProductsComponent,
+      canActivate: [authGuard],
     },
     {
       path: 'clubs',
       component: ClubsComponent,
+      canActivate: [authGuard],
     },
   ]),
     provideAnimationsAsync(),

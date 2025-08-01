@@ -14,6 +14,12 @@ export class AuthService {
   private isAuthenticated$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public isAuthenticatedObs$ : Observable<boolean> = this.isAuthenticated$.asObservable();
 
+  constructor() {
+    if (this.getAuthToken()) {
+      this.isAuthenticated$.next(true);
+    }
+  }
+
   login(credentials: { username: string, password: string }): Observable<any> {
     const url = 'https://backend.wellnesslifeclubs.com/api/v1/auth/login';
     return this.http.put(url, credentials).pipe(
@@ -39,5 +45,9 @@ export class AuthService {
 
   getAuthToken():string {
     return this._localStorage.getItem('accessToken');
+  }
+
+  isAuthenticated(): boolean {
+    return this.isAuthenticated$.value;
   }
 }

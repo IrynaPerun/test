@@ -1,7 +1,7 @@
-import {Component, inject, signal} from '@angular/core';
-import {AuthService} from "../../services/auth.service";
-import {RouterLink} from "@angular/router";
-import {toSignal} from "@angular/core/rxjs-interop";
+import { Component, inject } from '@angular/core';
+import { AuthService } from "../../services/auth.service";
+import { RouterLink } from "@angular/router";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-header',
